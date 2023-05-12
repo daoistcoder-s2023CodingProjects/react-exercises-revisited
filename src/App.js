@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    const [count, setCount] = useState(0)
+    const increment = () => {
+        setCount(count + 1)
+        console.log('count state:', count)
+
+    }
+
+    const [stringInput, setStringInput] = useState('')
+    const inputUser = (e) => {
+        setStringInput(e.target.value)
+        console.log('stringInput state:', stringInput)
+    }
+
+    const clearStringInput = () => {
+       setCount(0)
+       setStringInput('')
+       if (setCount = 0) {
+        console.log('count state:', count)
+       } else {
+        console.log('stringInput: ', stringInput)
+       }
+    }
+
+    return(
+        <>
+        <div>Count: {count}</div>
+        <button onClick={increment} >Increment</button>
+        <div>
+            <input onChange={inputUser} value={stringInput} placeholder='type here'>
+            </input>
+        </div>
+        <button onClick={clearStringInput}>clear</button>
+        </>
+    )
 }
 
-export default App;
+export default App
